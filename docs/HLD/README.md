@@ -1,5 +1,5 @@
 # High-level Documentation
-![HLD Diagram](static/hld-system-overview.png)
+![HLD Diagram](https://github.com/prabhpreet332/release-notes-generation/blob/doc/high-level-design/docs/static/hld-system-overview.png)
 
 ## Functional requirements
 Requirements:
