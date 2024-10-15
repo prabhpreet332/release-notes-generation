@@ -1,5 +1,5 @@
 # High-level Documentation
-![HLD Diagram](http://www.plantuml.com/plantuml/proxy?cache=no&src=https://raw.github.com/prabhpreet332/release-notes-generator/master/docs/HLD/hld.puml)
+![HLD Diagram](static/hld-system-overview.png)
 
 ## Functional requirements
 Requirements:
