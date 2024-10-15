@@ -1,5 +1,7 @@
 # High-level Documentation
-![HLD Diagram](https://github.com/prabhpreet332/release-notes-generation/blob/doc/high-level-design/docs/static/hld-system-overview.png)
+![HLD Diagram](https://github.com/prabhpreet332/release-notes-generation/blob/master/docs/static/hld-system-overview.png)
+
+If image resolution is low or does not render well. Export a new diagram with `hld.puml` file.
 
 ## Functional requirements
 Requirements:
@@ -8,11 +10,6 @@ Requirements:
 3. The system should exists as a python package. So installation should be as simple as `pip install release-note-generator` with minimum possible external dependencies.
 4. Information that is to be processed needs to be from the commit history in the specified branch. Additionally, there should be a provision (not for now) to have the information from the GitHub/Gitlab etc specific functionalities like Labels, Milestones etc.
 5. Plan of developing the package and not a simple script is to have the system highly configurable. So,  having a configurations schema setup is essential. We also need to have django-settings like configuration management.
-
-## Overall System:
-
-## Individual Components:
-
 
 ## Notes:
 
