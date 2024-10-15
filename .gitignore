@@ -1,3 +1,7 @@
+# Plant UML files and exports
+C4_*.puml
+out/*
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

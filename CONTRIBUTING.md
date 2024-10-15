@@ -13,3 +13,6 @@
 
 ## Planned architecture and documentation
 1. `<TODO>`
+
+## References
+1. https://www.conventionalcommits.org/en/v1.0.0/#specification

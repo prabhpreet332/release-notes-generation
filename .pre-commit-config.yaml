@@ -24,6 +24,7 @@ repos:
       - id: check-docstring-first
       - id: check-json
       - id: check-yaml
+      - id: check-ast
       - id: debug-statements
       - id: check-merge-conflict
       - id: requirements-txt-fixer
@@ -33,6 +34,7 @@ repos:
       - id: detect-aws-credentials
         args: [--allow-missing-credentials]
       - id: check-added-large-files
+        args: ['--maxkb=1000']
 
   - repo: https://github.com/myint/docformatter
     rev: v1.3.1
@@ -52,3 +54,8 @@ repos:
       args: [--strict, --ignore-missing-imports]
       # https://github.com/python/mypy/issues/10632#issuecomment-1017811105
       additional_dependencies: ['types-requests']
+
+  - repo: https://github.com/PyCQA/bandit
+    rev: 1.7.10
+    hooks:
+    - id: bandit

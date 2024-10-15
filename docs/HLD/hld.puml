@@ -1,0 +1,50 @@
+@startuml SystemOverview
+
+' get the following files from the URLs below them.
+!include C4_Context.puml
+' !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Context.puml
+!include C4_Component.puml
+' !include https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+
+LAYOUT_TOP_DOWN()
+' LAYOUT_WITH_LEGEND()
+' LAYOUT_LEFT_RIGHT()
+
+title Release Note Generator System Overview
+
+Component(config_manger, "Config Manager", "Manages the configuration in yaml.")
+
+Container_Boundary(system_boundary, "Orchestrator") {
+    Rel_Right(config_manger, system_boundary, "Injects configurations")
+
+    Container_Boundary(input_boundary, "Data Sourcing") {
+        Component(input_processor, "Input Processor", "Pulls the data from the VCS sources like GitHub, Gitlab etc")
+        System_Ext(github, "GitHub", "Version Control Software")
+        System_Ext(gitlab, "Gitlab", "Version Control Software")
+
+        Rel_Up(input_processor, gitlab, "Fetches VCS info")
+        Rel_Up(input_processor, github, "Fetches commit history, branches, labels, tags")
+    }
+
+
+    Component(llm, "LLM based summarizer", "Summarizes the VCS info and process into a certain formats.")
+    Component(processor, "Processor", "Processes the Commit history, Branches, VCS Specific (Labels, milestones) etc from input sources to get the Release Notes generated")
+
+    Rel_Right(processor, llm, "VCS info")
+    Rel_Left(llm, processor, "Summarized info")
+    Rel_Down(input_boundary, processor, "Source Data Input")
+
+
+    Container_Boundary(output_boundary, "Target Data") {
+        Component(output_processor, "Output Processor", "Processes the data and sends to multiple Targets (stdout, confluence, etc)")
+        System_Ext(confluence, "Atlassian Confluence", "Team workspace to share/create the internal documents collaboratively.")
+        System_Ext(stdout, "stdout", "Standard Output stream")
+
+        Rel_Down(output_processor, confluence, "Publishes release notes")
+        Rel_Down(output_processor, stdout, "Outputs")
+    }
+    Rel_Down(processor, output_boundary, "Formatted data output")
+}
+
+@enduml
